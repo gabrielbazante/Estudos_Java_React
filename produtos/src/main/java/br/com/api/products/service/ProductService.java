@@ -22,7 +22,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public ResponseEntity<?> saveProduct(ProductModel productModel){
+    public ResponseEntity<?> saveProduct(ProductModel productModel, String action){
         if(productModel.getName().equals("")) {
             responseModel.setMessage("Product name cannot be empty");
             return new ResponseEntity<ResponseModel>(responseModel, HttpStatus.BAD_REQUEST);
@@ -30,7 +30,12 @@ public class ProductService {
             responseModel.setMessage("Product brand cannot be empty");
             return new ResponseEntity<ResponseModel>(responseModel, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity<ProductModel>(productRepository.save(productModel), HttpStatus.CREATED);
+            if(action.equals("create")){
+                return new ResponseEntity<ProductModel>(productRepository.save(productModel), HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<ProductModel>(productRepository.save(productModel), HttpStatus.OK);
+            }
+            
         }
     }
 }

@@ -23,6 +23,6 @@ public class ProductController {
 
     @PostMapping("/registerProduct")
     public ResponseEntity<?> saveProduct(@RequestBody ProductModel productModel) {
-        return productService.saveProduct(productModel);
+        return productService.saveProduct(productModel, "create");
     }
 }
