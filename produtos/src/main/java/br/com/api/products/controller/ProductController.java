@@ -1,4 +1,4 @@
-package br.com.api.produtos.controller;
+package br.com.api.products.controller;
 
 public class ProductController {
     
