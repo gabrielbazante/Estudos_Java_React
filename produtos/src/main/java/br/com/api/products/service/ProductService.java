@@ -38,4 +38,10 @@ public class ProductService {
             
         }
     }
+
+    public ResponseEntity<ResponseModel> deleteProduct(Long id) {
+        productRepository.deleteById(id);
+        responseModel.setMessage("Product deleted successfully");
+        return new ResponseEntity<ResponseModel>(responseModel, HttpStatus.OK);
+    }
 }
